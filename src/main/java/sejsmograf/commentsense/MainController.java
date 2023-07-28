@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import sejsmograf.commentsense.api.YoutubeService;
+import com.google.api.services.youtube.model.CommentThread;
+
+import sejsmograf.commentsense.youtubeapi.YoutubeService;
 
 @Controller
 public class MainController {
@@ -26,13 +28,9 @@ public class MainController {
 
     @GetMapping("/comments/{videoId}")
     @ResponseBody
-    public String getCommentsText(@PathVariable(value = "videoId") String videoId) {
+    public List<CommentThread> getCommentsText(@PathVariable(value = "videoId") String videoId) {
 
-        List<String> commentsText = youtubeService.getCommentThreadsForVideo(videoId).stream()
-                .map(thread -> thread.getSnippet().getTopLevelComment().getSnippet().getTextDisplay())
-                .collect(Collectors.toList());
-
-        return String.join("\n", commentsText);
+        return youtubeService.fetchAllCommentsThreads(videoId);
     }
 
 }

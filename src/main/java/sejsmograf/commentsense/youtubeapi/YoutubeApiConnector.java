@@ -1,4 +1,4 @@
-package sejsmograf.commentsense.api;
+package sejsmograf.commentsense.youtubeapi;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
