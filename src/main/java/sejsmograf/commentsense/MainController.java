@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.api.services.youtube.model.CommentThread;
+import com.google.api.services.youtube.model.SearchResult;
 
 import sejsmograf.commentsense.youtubeapi.YoutubeService;
 
@@ -28,9 +29,15 @@ public class MainController {
 
     @GetMapping("/comments/{videoId}")
     @ResponseBody
-    public List<CommentThread> getCommentsText(@PathVariable(value = "videoId") String videoId) {
+    public List<CommentThread> fetchAllCommentThreads(@PathVariable(value = "videoId") String videoId) {
 
         return youtubeService.fetchAllCommentsThreads(videoId);
+    }
+
+    @GetMapping("/search/{query}")
+    @ResponseBody
+    public List<SearchResult> searchVideos(@PathVariable(value = "query") String query) {
+        return youtubeService.searchVideos(query);
     }
 
 }
