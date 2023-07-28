@@ -22,9 +22,9 @@ public class MainController {
         this.youtubeService = youtubeService;
     }
 
-    @GetMapping("/sejsmo")
+    @GetMapping("/search")
     public String getIndex(Model model) {
-        return "index.html";
+        return "search.html";
     }
 
     @GetMapping("/comments/{videoId}")

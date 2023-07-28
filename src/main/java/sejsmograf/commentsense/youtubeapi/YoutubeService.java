@@ -11,7 +11,6 @@ import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.CommentThread;
 import com.google.api.services.youtube.model.CommentThreadListResponse;
 import com.google.api.services.youtube.model.SearchResult;
-import com.google.api.services.youtube.model.Video;
 
 import sejsmograf.commentsense.config.YoutubeConfigProperties;
 
