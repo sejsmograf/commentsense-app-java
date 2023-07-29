@@ -58,6 +58,7 @@ public class YoutubeService {
             YouTube.Search.List request = youtube.search().list(List.of("snippet"));
 
             request.setQ(query);
+            request.setType(List.of("video"));
             request.setKey(youtubeConfig.apiKey());
 
             return request.execute().getItems();
